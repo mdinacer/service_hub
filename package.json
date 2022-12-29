@@ -16,6 +16,7 @@
     "@auth0/nextjs-auth0": "^2.0.1",
     "@heroicons/react": "^2.0.13",
     "@hookform/resolvers": "^2.9.10",
+    "@reduxjs/toolkit": "^1.9.1",
     "add": "^2.0.6",
     "apollo-upload-client": "^17.0.0",
     "axios": "^1.2.2",
