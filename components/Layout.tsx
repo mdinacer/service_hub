@@ -24,7 +24,9 @@ const Layout = ({
       />
       <main className="relative flex min-h-screen select-none flex-col items-stretch bg-white text-slate-900 dark:bg-slate-800 dark:text-white">
         <ToastContainer theme="colored" position="bottom-right" />
-        <div className={className}>{children}</div>
+        <div className={`flex-1 ${className ?? ' container mx-auto px-5'}`}>
+          {children}
+        </div>
       </main>
     </>
   );

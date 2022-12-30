@@ -1,29 +1,33 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'store/configureStore';
+import { fetchProfileAsync } from 'store/slices/profileSlice';
+
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { useCallback, useEffect, useState } from 'react';
-import { MemberProfile } from '../models/member-profile';
-import agent from '../services/agent';
+import { useMemo } from 'react';
 
 export default function useInitApp() {
   const { user } = useUser();
-  const [profile, setProfile] = useState<MemberProfile | null>(null);
+  const dispatch = useAppDispatch();
 
-  const fetchProfile = useCallback(async () => {
-    try {
-      const response = await agent.Account.me();
-
-      setProfile(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  const {
+    profile,
+    profileLoaded,
+    status: profileStatus
+  } = useAppSelector((state) => state.profile);
+  const profileLoading = useMemo(
+    () => profileStatus === 'pending',
+    [profileStatus]
+  );
 
   useEffect(() => {
-    if (user) {
-      fetchProfile();
+    if (user && !profileLoaded && profileStatus !== 'pending') {
+      dispatch(fetchProfileAsync());
     }
-  }, [user]);
+  }, [dispatch, profileLoaded, profileStatus, user]);
 
   return {
-    profile
+    profile,
+    profileLoading,
+    profileLoaded
   };
 }

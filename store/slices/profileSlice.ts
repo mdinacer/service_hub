@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { MemberUpdateInput } from "../../gql/member/mutations";
-import { MemberProfile } from "../../models/member-profile";
-import agent from "../../services/agent";
-import { RootState } from "../configureStore";
+import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit';
+
+import { MemberUpdateInput } from '../../gql/member/mutations';
+import { MemberProfile } from '../../models/member-profile';
+import agent from '../../services/agent';
+import { RootState } from '../configureStore';
 
 interface ProfileState {
     profile: MemberProfile | null;
@@ -13,8 +14,8 @@ interface ProfileState {
 const initialState: ProfileState = {
     profile: null,
     profileLoaded: false,
-    status: "idle"
-}
+    status: 'idle'
+};
 
 export const fetchProfileAsync = createAsyncThunk<
     MemberProfile,
@@ -41,7 +42,7 @@ export const fetchProfileAsync = createAsyncThunk<
 
 export const updateProfileAsync = createAsyncThunk<
     MemberProfile,
-    MemberUpdateInput,
+    Partial<MemberUpdateInput>,
     { state: RootState }
 >('profile/updateProfileAsync', async (values, thunkApi) => {
     try {
@@ -53,7 +54,7 @@ export const updateProfileAsync = createAsyncThunk<
 });
 
 export const profileSlice = createSlice({
-    name: 'products',
+    name: 'profile',
     initialState,
     reducers: {
         setProfile: (state, action) => {

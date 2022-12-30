@@ -1,13 +1,13 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { configureStore } from '@reduxjs/toolkit';
-
-
+import { profileSlice } from './slices/profileSlice';
+import { categoriesSlice } from './slices/categoriesSlice';
 
 export const store = configureStore({
   reducer: {
-    //colors: colorsSlice.reducer,
-
+    categories: categoriesSlice.reducer,
+    profile: profileSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -4,14 +4,16 @@ import '../styles/globals.css';
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
+import { store } from 'store/configureStore';
 
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 
-// import { store } from '../stores/configureStore';
-
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import agent from '@services/agent';
+import { ServiceCategory } from '@models/service-category';
 function MyApp({ Component, pageProps }: AppProps) {
-  const url = `https://creator.vulkaza.com`;
+  const url = `https://services-hub.com`;
 
   return (
     <>
@@ -28,11 +30,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             rel: 'apple-touch-icon',
             href: '/apple-touch-icon.png',
             sizes: '76x76'
-          },
-          {
-            rel: 'manifest',
-            href: '/site.webmanifest'
           }
+          // {
+          //   rel: 'manifest',
+          //   href: '/site.webmanifest'
+          // }
         ]}
         titleTemplate="%s - ServiceHub"
         defaultTitle="Service Hub"
@@ -60,10 +62,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
 
       <UserProvider>
-        {/* <Provider store={store}> */}
-        {/* <Component {...pageProps} canonical={url} key={url} /> */}
-        {/* </Provider> */}
-        <Component {...pageProps} canonical={url} key={url} />
+        <Provider store={store}>
+          <Component {...pageProps} canonical={url} key={url} />
+        </Provider>
       </UserProvider>
     </>
   );
