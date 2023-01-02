@@ -1,6 +1,6 @@
 import { MemberProfile } from 'models/member-profile';
 import React, { useCallback, useEffect } from 'react';
-import { FieldValues, FormProvider, useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFieldInput from '../inputs/TextFieldInput';
@@ -49,55 +49,51 @@ const AccountForm: React.FC<Props> = ({ profile, onClose }) => {
     }
   }
   return (
-    <div>
-      <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit(handleSubmitData)}
-          className="flex w-full max-w-lg flex-col items-stretch gap-4"
-        >
-          <TextFieldInput
-            autoComplete="first name"
-            control={control}
-            name={'firstName'}
-            label="First Name"
-          />
-          <TextFieldInput
-            autoComplete="last name"
-            control={control}
-            name={'lastName'}
-            label="Last Name"
-          />
-          <TextFieldInput
-            autoComplete="email"
-            control={control}
-            name={'email'}
-            label="Email"
-          />
-          <TextFieldInput
-            autoComplete="phone"
-            control={control}
-            name={'phone'}
-            label="Phone Number"
-          />
+    <form
+      onSubmit={handleSubmit(handleSubmitData)}
+      className="flex w-full max-w-lg flex-col items-stretch gap-4"
+    >
+      <TextFieldInput
+        autoComplete="first name"
+        control={control}
+        name={'firstName'}
+        label="First Name"
+      />
+      <TextFieldInput
+        autoComplete="last name"
+        control={control}
+        name={'lastName'}
+        label="Last Name"
+      />
+      <TextFieldInput
+        autoComplete="email"
+        control={control}
+        name={'email'}
+        label="Email"
+      />
+      <TextFieldInput
+        autoComplete="phone"
+        control={control}
+        name={'phone'}
+        label="Phone Number"
+      />
 
-          <div className=" mt-4 flex w-full flex-row items-center justify-between">
-            <button
-              onClick={onClose}
-              type="button"
-              className=" rounded border border-black py-2  px-4"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className=" rounded bg-teal-500 py-2 px-4 text-white"
-            >
-              Save
-            </button>
-          </div>
-        </form>
-      </FormProvider>
-    </div>
+      <div className=" mt-4 flex w-full flex-row items-center justify-between">
+        <button
+          onClick={onClose}
+          type="button"
+          className=" rounded border border-black py-2  px-4"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className=" rounded bg-teal-500 py-2 px-4 text-white"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   );
 };
 

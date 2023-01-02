@@ -1,3 +1,4 @@
+import { MemberService, ServiceCreateInput } from '@models/member-service';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { MemberUpdateInput } from 'gql/member/mutations';
 import { toast } from 'react-toastify';
@@ -98,10 +99,20 @@ const Categories = {
 
 };
 
+const Services = {
+  list: () => requests.get(`services`),
+  get: (id: string) => requests.get(`services/${id}`),
+  create: (data: any) => requests.post<MemberService>(`services/create`, data),
+  update: (data: any) => requests.post(`services/update`, data),
+  delete: (id: string) => requests.post(`services/delete`, { id }),
+
+};
+
 const agent = {
   Account,
   Assets,
-  Categories
+  Categories,
+  Services
 };
 
 export default agent;

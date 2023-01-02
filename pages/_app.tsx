@@ -9,9 +9,6 @@ import { store } from 'store/configureStore';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
-import agent from '@services/agent';
-import { ServiceCategory } from '@models/service-category';
 function MyApp({ Component, pageProps }: AppProps) {
   const url = `https://services-hub.com`;
 

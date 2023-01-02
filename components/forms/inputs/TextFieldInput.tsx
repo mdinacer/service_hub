@@ -40,8 +40,9 @@ export default TextFieldInput;
 
 const inputStyles = {
   container: 'flex flex-col gap-y-2 ',
-  label: 'font-Secondary uppercase text-gray-500 px-1',
+  label: 'font-Secondary uppercase text-gray-500 dark:text-gray-400 px-1',
   input:
-    'rounded-md border   bg-gray-100 py-2 px-4 transition-all duration-200 focus:outline-none focus:bg-white hover:bg-gray-50',
-  error: ' bg-errorRed/10 rounded-md px-4 py-1 text-darkBlue text-opacity-70'
+    'rounded-md border dark:placeholder:text-slate-400 dark:bg-slate-600 dark:border-slate-800 dark:hover:bg-slate-500 dark:focus:bg-slate-500 bg-gray-100 py-2 px-4 placeholder:text-sm transition-all duration-200 focus:outline-none focus:bg-white hover:bg-gray-50',
+  error:
+    ' bg-red-500/10 dark:bg-red-500/40 rounded-md px-4 py-1 text-darkBlue text-opacity-70'
 };

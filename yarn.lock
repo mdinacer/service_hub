@@ -3854,6 +3854,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-currency-input-field@npm:^3.6.9":
+  version: 3.6.9
+  resolution: "react-currency-input-field@npm:3.6.9"
+  peerDependencies:
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0
+  checksum: d13016069cde18193724fa4640fb84aa5541dbba643b59c4896819508de2f0d1c8f2d87eaf6ede11ed55547d22cc3a04edecd0c52b015ca4fbe3fdf1ba2fb380
+  languageName: node
+  linkType: hard
+
 "react-date-range@npm:^1.4.0":
   version: 1.4.0
   resolution: "react-date-range@npm:1.4.0"
@@ -4188,6 +4197,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.2.1
     react: 18.2.0
     react-cropper: ^2.1.8
+    react-currency-input-field: ^3.6.9
     react-date-range: ^1.4.0
     react-dom: 18.2.0
     react-dropzone: ^14.2.3

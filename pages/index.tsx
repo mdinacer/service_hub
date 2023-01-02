@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import useMemberProfile from 'hooks/useMemberProfile';
+import useInitApp from 'hooks/useInitApp';
+import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 
-import AccountForm from '@components/forms/account/AccountForm';
+import ServiceForm from '@components/forms/services/ServiceForm';
 import Layout from '@components/Layout';
 import Modal from '@components/modals/Modal';
+import AppStepper from '@components/stepper/AppStepper';
 
-import type { NextPage } from 'next';
-import useInitApp from 'hooks/useInitApp';
 const Home: NextPage = () => {
   const [modalVisible, setModalVisible] = useState(true);
   useInitApp();
@@ -21,12 +21,17 @@ const Home: NextPage = () => {
       <a href={'/api/auth/login'}>Login</a>
       <a href={'/api/auth/logout'}>Logout</a> */}
       <a href={'/api/auth/login'}>Login</a>
-      {/* <Modal
-        visible={!!profile && modalVisible}
+
+      <AppStepper />
+
+      <Modal
+        className=" "
+        visible={modalVisible}
         onClose={() => setModalVisible(false)}
       >
-        <AccountForm profile={profile} onClose={() => setModalVisible(false)} />
-      </Modal> */}
+        <ServiceForm onClose={() => setModalVisible(false)} />
+        {/* <AppStepper /> */}
+      </Modal>
     </Layout>
   );
 };

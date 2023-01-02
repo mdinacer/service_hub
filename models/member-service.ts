@@ -1,19 +1,14 @@
 import { AssetInput } from "./asset";
 import { DurationUnit } from "./duration-unit";
 import { LocationInput } from "./location";
-import { ServiceCategoryInput } from "./service-category";
-import { ServiceTypeInput } from "./service-type";
+import { ServiceAvailability } from "./service-availability";
 
 export type MemberService = {
-
-}
-
-export type ServiceCreateInput = {
     name: string;
     description: string;
     price: number;
     location: LocationInput;
-    availability: Date;
+    availability: Array<ServiceAvailability>;
     duration: number;
     rating: number;
     tags: [string];
@@ -21,4 +16,20 @@ export type ServiceCreateInput = {
     categoryId: string;
     serviceTypeId: string;
     durationUnit: DurationUnit;
+}
+
+export type ServiceCreateInput = {
+    name: string;
+    description: string;
+    price: number;
+    location: LocationInput;
+    availability: Array<ServiceAvailability>;
+    duration: number;
+    rating: number;
+    tags: [string];
+    images: Array<AssetInput>;
+    categoryId: string;
+    serviceTypeId: string;
+    durationUnit: DurationUnit;
+
 }

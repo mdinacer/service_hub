@@ -65,6 +65,9 @@ export const categoriesSlice = createSlice({
           categoryId: category.id
         }))
       }));
+
+      console.log(categories);
+
       categoriesAdapter.setAll(state, categories || []);
       state.status = 'idle';
       state.categoriesLoaded = true;
